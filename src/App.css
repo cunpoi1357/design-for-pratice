@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+
+@layer base {
+    body h2 {
+        @apply text-4xl;
+    }
+}
+
+@layer components {
+    .form-shadow {
+        box-shadow: 0px 8px 48px rgba(123, 97, 255, 0.15);
+    }
+    .menu-item {
+        @apply flex w-full px-7 py-4 text-neutrals-04 cursor-pointer hover:bg-primary hover:text-[#FCFCFD] hover:font-bold transition-colors;
+    }
+    .menu-item--active {
+        @apply bg-primary text-[#FCFCFD] font-bold;
+    }
+}
