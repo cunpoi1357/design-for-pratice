@@ -1,7 +1,7 @@
 import React from 'react'
 
-function Store() {
-    return <div>Store</div>
+function StoreList() {
+    return <div>Kho {'>'} Kiểm kê</div>
 }
 
-export default Store
+export default StoreList

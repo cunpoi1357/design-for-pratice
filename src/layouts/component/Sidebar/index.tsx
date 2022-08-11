@@ -1,10 +1,10 @@
-import React from 'react'
-import { NavLink, useMatch } from 'react-router-dom'
+import React, { useState } from 'react'
 
 import {
     CustomerIcon,
     DashboardIcon,
     DotIcon,
+    IIcon,
     OrdersIcon,
     ProductIcon,
     ReportIcon,
@@ -13,19 +13,21 @@ import {
     TrendingUpIcon
 } from '../../../components/Icon'
 import config from '../../../config'
+import MenuItem from './MenuItem'
+import SubMenu from './SubMenu'
 
-interface Menu_item {
+export interface IMenuItem {
     label: string
-    icon: JSX.Element
+    icon: React.FC<IIcon>
     path: string
     children?: {
         label: string
-        icon: JSX.Element
-        active: boolean
-    }
+        icon: React.FC<IIcon>
+        path: string
+    }[]
 }
 
-const MENU_ITEMS = [
+const MENU_ITEMS: IMenuItem[] = [
     {
         label: 'Tổng quan',
         icon: DashboardIcon,
@@ -66,17 +68,73 @@ const MENU_ITEMS = [
     {
         label: 'Kinh doanh',
         icon: TrendingUpIcon,
-        children: []
+        path: config.routes.business,
+        children: [
+            {
+                label: 'Khách hàng',
+                icon: DotIcon,
+                path: config.routes.businessCustomer
+            },
+            {
+                label: 'Đơn giá',
+                icon: DotIcon,
+                path: config.routes.businessPrice
+            },
+            {
+                label: 'Đơn đặt hàng',
+                icon: DotIcon,
+                path: config.routes.businessOrder
+            },
+            {
+                label: 'Đơn bán hàng',
+                icon: DotIcon,
+                path: config.routes.businessSell
+            }
+        ]
     },
     {
         label: 'Kế toán',
         icon: OrdersIcon,
-        children: []
+        path: config.routes.accountancy,
+        children: [
+            {
+                label: 'Phiếu thu',
+                icon: DotIcon,
+                path: config.routes.accountancyImport
+            },
+            {
+                label: 'Phiếu chi',
+                icon: DotIcon,
+                path: config.routes.accountancyExport
+            }
+        ]
     },
     {
         label: 'Báo cáo',
         icon: ReportIcon,
-        children: []
+        path: config.routes.report,
+        children: [
+            {
+                label: 'Đơn bán hàng',
+                icon: DotIcon,
+                path: config.routes.reportSell
+            },
+            {
+                label: 'Đơn đặt hàng',
+                icon: DotIcon,
+                path: config.routes.reportOrder
+            },
+            {
+                label: 'Công nợ đơn hàng',
+                icon: DotIcon,
+                path: config.routes.reportOrderDebt
+            },
+            {
+                label: 'Công nợ khách hàng',
+                icon: DotIcon,
+                path: config.routes.reportCustomerDebt
+            }
+        ]
     },
     {
         label: 'Nhân viên',
@@ -91,55 +149,32 @@ const MENU_ITEMS = [
 ]
 
 function Sidebar() {
+    const [showSubMenu, setShowSubMenu] = useState<String | null>(null)
+
+    const handleShowSubMenu = (path: String | null) => {
+        if (path === showSubMenu) {
+            setShowSubMenu(null)
+        } else {
+            setShowSubMenu(path)
+        }
+    }
+
     return (
         <aside className='col-span-1 w-[350px] h-screen bg-secondary pt-6'>
             <h2 className='text-center font-semibold text-white pb-8 mb-8 border-b border-neutrals-05'>Việt Hoàng</h2>
             <ul>
-                {MENU_ITEMS.map((item, index) => {
-                    const Icon = item.icon
-                    const match = useMatch(`${item.path}/*`)
-
+                {MENU_ITEMS.map(item => {
                     if (item.children) {
                         return (
-                            <li key={index} className='flex flex-col'>
-                                <div className={`menu-item ${match && 'text-[#FCFCFD] font-bold'}`}>
-                                    <Icon />
-                                    <span className='ml-6 font-semibold text-base'>{item.label}</span>
-                                </div>
-                                <ul>
-                                    {item.children.map((item, index) => {
-                                        const Icon = item.icon
-                                        return (
-                                            <li key={index} className='flex'>
-                                                <NavLink
-                                                    to={item.path}
-                                                    className={({ isActive }) =>
-                                                        isActive ? 'menu-item menu-item--active' : 'menu-item '
-                                                    }
-                                                >
-                                                    <Icon />
-                                                    <span className='ml-6 font-semibold text-base'>{item.label}</span>
-                                                </NavLink>
-                                            </li>
-                                        )
-                                    })}
-                                </ul>
-                            </li>
+                            <SubMenu
+                                key={item.path}
+                                item={item}
+                                isShowSubMenu={showSubMenu === item.path}
+                                setShowSubMenu={() => handleShowSubMenu(item.path)}
+                            />
                         )
                     } else {
-                        return (
-                            <li key={index} className='flex'>
-                                <NavLink
-                                    to={item.path}
-                                    className={({ isActive }) =>
-                                        isActive ? 'menu-item menu-item--active' : 'menu-item '
-                                    }
-                                >
-                                    <Icon />
-                                    <span className='ml-6 font-semibold text-base'>{item.label}</span>
-                                </NavLink>
-                            </li>
-                        )
+                        return <MenuItem key={item.path} item={item} />
                     }
                 })}
             </ul>

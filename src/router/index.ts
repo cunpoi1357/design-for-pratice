@@ -8,10 +8,22 @@ import Login from '../pages/Login'
 import Dashboard from '../pages/Dashboard'
 import Store from '../pages/Store'
 import Product from '../pages/Product'
-import StoreList from '../pages/StoreList'
-import StoreImport from '../pages/StoreImport'
-import StoreExport from '../pages/StoreExport'
-import StoreCheck from '../pages/StoreCheck'
+import StoreList from '../pages/Store/List'
+import StoreImport from '../pages/Store/Import'
+import StoreExport from '../pages/Store/Export'
+import StoreCheck from '../pages/Store/Check'
+import Staff from '../pages/Staff'
+import Settings from '../pages/Settings'
+import BusinessCustomer from '../pages/Business/Customer'
+import BusinessSell from '../pages/Business/Sell'
+import BusinessOrder from '../pages/Business/Order'
+import BusinessPrice from '../pages/Business/Price'
+import AccountancyImport from '../pages/Accountancy/Import'
+import AccountancyExport from '../pages/Accountancy/Export'
+import ReportSell from '../pages/Report/Sell'
+import ReportOrder from '../pages/Report/Order'
+import ReportOrderDebt from '../pages/Report/OrderDebt'
+import ReportCustomerDebt from '../pages/Report/CustomerDebt'
 
 interface Route {
     path: string
@@ -58,6 +70,54 @@ const publicRoutes: Route[] = [
     {
         path: config.routes.product,
         component: Product
+    },
+    {
+        path: config.routes.businessCustomer,
+        component: BusinessCustomer
+    },
+    {
+        path: config.routes.businessPrice,
+        component: BusinessPrice
+    },
+    {
+        path: config.routes.businessOrder,
+        component: BusinessOrder
+    },
+    {
+        path: config.routes.businessSell,
+        component: BusinessSell
+    },
+    {
+        path: config.routes.staff,
+        component: Staff
+    },
+    {
+        path: config.routes.accountancyImport,
+        component: AccountancyImport
+    },
+    {
+        path: config.routes.accountancyExport,
+        component: AccountancyExport
+    },
+    {
+        path: config.routes.reportSell,
+        component: ReportSell
+    },
+    {
+        path: config.routes.reportOrder,
+        component: ReportOrder
+    },
+    {
+        path: config.routes.reportOrderDebt,
+        component: ReportOrderDebt
+    },
+    {
+        path: config.routes.reportCustomerDebt,
+        component: ReportCustomerDebt
+    },
+    {
+        path: config.routes.settings,
+        component: Settings
     }
 ]
 

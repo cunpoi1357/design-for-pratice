@@ -9,8 +9,18 @@ const router = {
     storeCheck: '/store/check',
     product: '/product',
     business: '/business',
+    businessCustomer: '/business/customer',
+    businessPrice: '/business/price',
+    businessOrder: '/business/order',
+    businessSell: '/business/sell',
     accountancy: '/accountancy',
+    accountancyImport: '/accountancy/import',
+    accountancyExport: '/accountancy/export',
     report: '/report',
+    reportSell: '/report/sell',
+    reportOrder: '/report/order',
+    reportOrderDebt: '/report/order-debt',
+    reportCustomerDebt: '/report/customer-debt',
     staff: '/staff',
     settings: '/settings'
 }

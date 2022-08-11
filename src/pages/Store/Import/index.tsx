@@ -1,7 +1,7 @@
 import React from 'react'
 
 function StoreImport() {
-    return <div>StoreImport</div>
+    return <div>Kho {'>'} Nhập kho</div>
 }
 
 export default StoreImport

@@ -1,7 +1,7 @@
 import React from 'react'
 
 function StoreCheck() {
-    return <div>StoreCheck</div>
+    return <div>Kho {'>'} Kiểm kê</div>
 }
 
 export default StoreCheck
