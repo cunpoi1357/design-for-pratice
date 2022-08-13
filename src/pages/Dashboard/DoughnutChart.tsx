@@ -56,7 +56,7 @@ function DoughnutChart() {
     const data = {
         datasets: [
             {
-                data: [15, 10, 18, 15, 24],
+                data: dataList.map(item => item.value),
                 backgroundColor: dataList.map(item => item.color)
             }
         ]
