@@ -5,6 +5,12 @@
     body h2 {
         @apply text-4xl;
     }
+    body h3 {
+        @apply text-xl;
+    }
+    body h4 {
+        @apply text-lg;
+    }
 }
 
 @layer components {
@@ -12,9 +18,24 @@
         box-shadow: 0px 8px 48px rgba(123, 97, 255, 0.15);
     }
     .menu-item {
-        @apply flex items-center w-full pl-7 pr-[30px] py-4 text-neutrals-04 cursor-pointer hover:bg-primary hover:text-[#FCFCFD] hover:font-bold transition-colors;
+        @apply flex items-center w-full pl-7 pr-[30px] py-4 text-neutrals-04 cursor-pointer hover:bg-primary-blue hover:text-[#FCFCFD] hover:font-bold transition-colors;
     }
     .menu-item--active {
-        @apply bg-primary text-[#FCFCFD] font-bold;
+        @apply bg-primary-blue text-[#FCFCFD] font-bold;
     }
+}
+
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
 }

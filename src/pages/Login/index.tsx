@@ -31,11 +31,11 @@ function Login() {
             </div>
             <a
                 href='#'
-                className='mb-8 inline-block float-right text-primary font-normal text-base leading-6 hover:underline cursor-pointer'
+                className='mb-8 inline-block float-right text-primary-blue font-normal text-base leading-6 hover:underline cursor-pointer'
             >
                 Quên mật khẩu?
             </a>
-            <button className='w-full text-lg leading-8 bg-primary text-white border rounded py-3 hover:opacity-80 transition duration-200'>
+            <button className='w-full text-lg leading-8 bg-primary-blue text-white border rounded py-3 hover:opacity-80 transition duration-200'>
                 Đăng nhập
             </button>
         </form>

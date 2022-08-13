@@ -27,7 +27,7 @@ export interface IMenuItem {
     }[]
 }
 
-const MENU_ITEMS: IMenuItem[] = [
+export const MENU_ITEMS: IMenuItem[] = [
     {
         label: 'Tổng quan',
         icon: DashboardIcon,
@@ -160,7 +160,7 @@ function Sidebar() {
     }
 
     return (
-        <aside className='col-span-1 w-[350px] h-screen bg-secondary pt-6'>
+        <aside className='col-span-1 w-[350px] h-screen bg-secondary-dark-blue pt-6'>
             <h2 className='text-center font-semibold text-white pb-8 mb-8 border-b border-neutrals-05'>Việt Hoàng</h2>
             <ul>
                 {MENU_ITEMS.map(item => {
