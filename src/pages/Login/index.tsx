@@ -6,24 +6,24 @@ function Login() {
         <form className='w-full'>
             <h2 className='font-bold text-[34px] mb-10 text-center'>Đăng nhập</h2>
             <div className='relative mb-4'>
-                <label htmlFor='login_username' className='font-normal text-base leading-6'>
+                <label htmlFor='login_username' className='text-base font-normal leading-6'>
                     Tài khoản
                 </label>
                 <UserIcon className='absolute top-1/2 left-4' />
                 <input
-                    className='w-full pl-12 py-3 pr-4 border-neutrals-03 border outline-none rounded'
+                    className='w-full py-3 pl-12 pr-4 border rounded outline-none border-neutrals-03'
                     type='text'
                     id='login_username'
                     placeholder='Tài khoản'
                 />
             </div>
             <div className='relative mb-4'>
-                <label htmlFor='login_password' className='font-normal text-base leading-6'>
+                <label htmlFor='login_password' className='text-base font-normal leading-6'>
                     Mật khẩu
                 </label>
                 <KeyIcon className='absolute top-1/2 left-4' />
                 <input
-                    className='w-full pl-12 py-3 pr-4 border-neutrals-03 border outline-none rounded'
+                    className='w-full py-3 pl-12 pr-4 border rounded outline-none border-neutrals-03'
                     type='password'
                     id='login_password'
                     placeholder='Mật khẩu'
@@ -31,11 +31,11 @@ function Login() {
             </div>
             <a
                 href='#'
-                className='mb-8 inline-block float-right text-primary-blue font-normal text-base leading-6 hover:underline cursor-pointer'
+                className='inline-block float-right mb-8 text-base font-normal leading-6 cursor-pointer text-primary-blue hover:underline'
             >
                 Quên mật khẩu?
             </a>
-            <button className='w-full text-lg leading-8 bg-primary-blue text-white border rounded py-3 hover:opacity-80 transition duration-200'>
+            <button className='w-full py-3 text-lg leading-8 text-white transition duration-200 border rounded bg-primary-blue hover:opacity-80'>
                 Đăng nhập
             </button>
         </form>

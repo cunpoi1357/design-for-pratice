@@ -1,16 +1,16 @@
-import { useId } from 'react'
+import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
+
 import BarChart from './BarChart'
 import CardList from './CardList'
 import Table, { ITableColumns } from '../../components/Table'
 import DoughnutChart from './DoughnutChart'
 import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from '../../components/Icon'
+import Pagination from '../../components/Pagination'
+import Header from '../../components/Header'
+import Content from '../../components/Content'
 
 const orderColumns: ITableColumns[] = [
-    {
-        key: 'id',
-        label: 'STT',
-        slot: 1
-    },
     {
         key: 'orderId',
         label: 'Đơn hàng',
@@ -40,7 +40,7 @@ const orderColumns: ITableColumns[] = [
 
 const orderList = [
     {
-        id: 1,
+        id: uuidv4(),
         orderId: 'DH2112',
         customer: 'Công ty Hồng thái',
         staff: 'Admin',
@@ -48,7 +48,7 @@ const orderList = [
         status: 'Đã thanh toán'
     },
     {
-        id: 2,
+        id: uuidv4(),
         orderId: 'DH2112',
         customer: 'Công ty Hồng thái',
         staff: 'Admin',
@@ -56,7 +56,7 @@ const orderList = [
         status: 'Chưa thanh toán'
     },
     {
-        id: 3,
+        id: uuidv4(),
         orderId: 'DH2112',
         customer: 'Công ty Hồng thái',
         staff: 'Admin',
@@ -64,7 +64,7 @@ const orderList = [
         status: 'Đã thanh toán'
     },
     {
-        id: 4,
+        id: uuidv4(),
         orderId: 'DH2112',
         customer: 'Công ty Hồng thái',
         staff: 'Admin',
@@ -72,7 +72,7 @@ const orderList = [
         status: 'Chưa thanh toán'
     },
     {
-        id: 5,
+        id: uuidv4(),
         orderId: 'DH2112',
         customer: 'Công ty Hồng thái',
         staff: 'Admin',
@@ -82,11 +82,6 @@ const orderList = [
 ]
 
 const staffColumns: ITableColumns[] = [
-    {
-        key: 'id',
-        label: 'STT',
-        slot: 1
-    },
     {
         key: 'staff',
         label: 'Nhân viên',
@@ -106,62 +101,62 @@ const staffColumns: ITableColumns[] = [
 
 const staffList = [
     {
-        id: 1,
+        id: uuidv4(),
         staff: 'Nguyễn Việt Hoàng',
         phoneNumber: '0123456789',
         turnover: '19.000.000'
     },
     {
-        id: 2,
+        id: uuidv4(),
         staff: 'Nguyễn Việt Hoàng',
         phoneNumber: '0123456789',
         turnover: '19.000.000'
     },
     {
-        id: 3,
+        id: uuidv4(),
         staff: 'Nguyễn Việt Hoàng',
         phoneNumber: '0123456789',
         turnover: '19.000.000'
     },
     {
-        id: 4,
+        id: uuidv4(),
         staff: 'Nguyễn Việt Hoàng',
         phoneNumber: '0123456789',
         turnover: '19.000.000'
     },
     {
-        id: 5,
+        id: uuidv4(),
         staff: 'Nguyễn Việt Hoàng',
         phoneNumber: '0123456789',
         turnover: '19.000.000'
     },
 
     {
-        id: 6,
+        id: uuidv4(),
         staff: 'Nguyễn Việt Hoàng',
         phoneNumber: '0123456789',
         turnover: '19.000.000'
     },
     {
-        id: 7,
+        id: uuidv4(),
         staff: 'Nguyễn Việt Hoàng',
         phoneNumber: '0123456789',
         turnover: '19.000.000'
     },
     {
-        id: 8,
+        id: uuidv4(),
         staff: 'Nguyễn Việt Hoàng',
         phoneNumber: '0123456789',
         turnover: '19.000.000'
     },
     {
-        id: 9,
+        id: uuidv4(),
         staff: 'Nguyễn Việt Hoàng',
         phoneNumber: '0123456789',
         turnover: '19.000.000'
     },
     {
-        id: 10,
+        id: uuidv4(),
         staff: 'Nguyễn Việt Hoàng',
         phoneNumber: '0123456789',
         turnover: '19.000.000'
@@ -171,14 +166,14 @@ const staffList = [
 function Dashboard() {
     const orderListRender = orderList.map(item => ({
         ...item,
-        orderId: <span className='text-[#3282FA]'>{item.orderId}</span>,
+        orderId: <span className='text-[#3282FA] hover:underline cursor-pointer'>{item.orderId}</span>,
         status:
             item.status === 'Đã thanh toán' ? (
-                <span className='bg-secondary-green/5 py-1 px-2 rounded text-secondary-green border border-secondary-green'>
+                <span className='px-2 py-1 border rounded bg-secondary-green/5 text-secondary-green border-secondary-green'>
                     {item.status}
                 </span>
             ) : (
-                <span className='bg-primary-red/5 py-1 px-2 rounded text-primary-red border border-primary-red'>
+                <span className='px-2 py-1 border rounded bg-primary-red/5 text-primary-red border-primary-red'>
                     {item.status}
                 </span>
             )
@@ -191,7 +186,7 @@ function Dashboard() {
                 <img
                     src='http://yt3.ggpht.com/wgneNTiW753q5G6XMnjyNLAzReR4TVFJryTKTpIqJefrKMyhABPwfnyNWIoT5NNGstFlva1tgw=s176-c-k-c0x00ffffff-no-rj-mo'
                     alt='avatar'
-                    className='w-8 h-8 rounded-full mr-4'
+                    className='w-8 h-8 mr-4 rounded-full'
                 />
                 <span>{item.staff}</span>
             </div>
@@ -199,90 +194,55 @@ function Dashboard() {
     }))
 
     return (
-        <div>
-            <CardList />
-            <div className='grid grid-cols-7 gap-8'>
-                <div className='col-span-4 flex flex-col gap-6'>
-                    <BarChart />
-                    <Table
-                        className='bg-neutrals-01'
-                        title='Đơn bán hàng'
-                        to='/report/sell'
-                        columns={orderColumns}
-                        data={orderListRender}
-                    />
-                    <Table
-                        className='bg-neutrals-01'
-                        title='Đơn đặt hàng'
-                        to='/report/order'
-                        columns={orderColumns}
-                        data={orderListRender}
-                    />
-                </div>
-                <div className='col-span-3 flex flex-col gap-6'>
-                    <Table
-                        className='bg-neutrals-01'
-                        title='Nhân viên'
-                        to='/staff'
-                        columns={staffColumns}
-                        data={staffListRender}
-                        Footer={() => (
-                            <footer className='p-6 shadow-inner text-sm font-semibold flex justify-between items-center'>
-                                <span>
-                                    Có <span className='text-secondary-blue'>50</span> nhân viên
-                                </span>
-                                <ul className='flex items-center'>
-                                    {[
-                                        {
-                                            id: useId(),
-                                            node: <ChevronLeftIcon className='w-4 h-4' />,
-                                            active: false
-                                        },
-                                        {
-                                            id: useId(),
-                                            node: 1,
-                                            active: true
-                                        },
-                                        {
-                                            id: useId(),
-                                            node: 2,
-                                            active: false
-                                        },
-                                        {
-                                            id: useId(),
-                                            node: <MoreHorizontalIcon className='w-4 h-4' />,
-                                            active: false
-                                        },
-                                        {
-                                            id: useId(),
-                                            node: 5,
-                                            active: false
-                                        },
-                                        {
-                                            id: useId(),
-                                            node: <ChevronRightIcon className='w-4 h-4' />,
-                                            active: false
-                                        }
-                                    ].map(item => (
-                                        <li
-                                            key={item.id}
-                                            className={`mx-1 h-9 w-9 flex justify-center items-center ${
-                                                item.active ? 'bg-primary-blue text-white' : 'text-neutrals-07'
-                                            } rounded cursor-pointer hover:opacity-75 transition-opacity`}
-                                        >
-                                            {item.node}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </footer>
-                        )}
-                    />
-                    <div>
+        <>
+            <Header title='Tổng quan' />
+            <Content>
+                <CardList />
+                <div className='grid grid-cols-7 gap-8'>
+                    <div className='flex flex-col col-span-4 gap-6'>
+                        <BarChart />
+                        <Table
+                            className='bg-neutrals-01'
+                            title='Đơn bán hàng'
+                            to='/report/sell'
+                            columns={orderColumns}
+                            data={orderListRender}
+                            hasIndex
+                        />
+                        <Table
+                            className='bg-neutrals-01'
+                            title='Đơn đặt hàng'
+                            to='/report/order'
+                            columns={orderColumns}
+                            data={orderListRender}
+                            hasIndex
+                        />
+                    </div>
+                    <div className='flex flex-col col-span-3 gap-6'>
+                        <Table
+                            hasIndex
+                            className='bg-neutrals-01'
+                            title='Nhân viên'
+                            to='/staff'
+                            columns={staffColumns}
+                            data={staffListRender}
+                            Footer={
+                                <Pagination
+                                    initialPage={1}
+                                    totalPage={5}
+                                    title={
+                                        <span>
+                                            Có <span className='text-secondary-blue'>{15}</span> nhân viên
+                                        </span>
+                                    }
+                                />
+                            }
+                        />
                         <DoughnutChart />
                     </div>
                 </div>
-            </div>
-        </div>
+            </Content>
+        </>
     )
 }
 

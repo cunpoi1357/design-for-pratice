@@ -1,10 +1,9 @@
-import React from 'react'
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
+import { Chart as ChartJS, ArcElement } from 'chart.js'
 import { Doughnut } from 'react-chartjs-2'
-import ChartDataLabels from 'chartjs-plugin-datalabels'
+
 import { DotIcon } from '../../components/Icon'
 
-ChartJS.register(ArcElement, ChartDataLabels)
+ChartJS.register(ArcElement)
 
 function DoughnutChart() {
     const dataList = [
@@ -63,14 +62,14 @@ function DoughnutChart() {
     }
 
     return (
-        <div className=' bg-neutrals-01 p-6 rounded shadow flex flex-col justify-between'>
+        <div className='flex flex-col justify-between p-6 rounded shadow  bg-neutrals-01'>
             <div className='pb-6'>
                 <span className='text-xl font-bold'>Sản phẩm mỗi kho</span>
             </div>
             <div className='flex'>
                 <div className='w-[170px] h-[170px] mr-16 relative'>
                     <Doughnut options={options} data={data} />
-                    <span className='font-bold text-2xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+                    <span className='absolute text-2xl font-bold transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2'>
                         Kho
                     </span>
                 </div>

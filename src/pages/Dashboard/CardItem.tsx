@@ -10,12 +10,12 @@ interface ICardItem {
 
 function CardItem({ icon, title, value, percent }: ICardItem) {
     return (
-        <div className='flex col-span-1 bg-neutrals-01 shadow h-28 p-6 cursor-pointer'>
+        <div className='flex col-span-1 p-6 shadow cursor-pointer bg-neutrals-01 h-28'>
             {icon}
-            <div className='ml-4 flex flex-col flex-1'>
+            <div className='flex flex-col flex-1 ml-4'>
                 <span className='text-base text-neutrals-05 font-semibold mb-[6px]'>{title}</span>
                 <div className='flex justify-between'>
-                    <span className='font-bold text-2xl'>{value}</span>
+                    <span className='text-2xl font-bold'>{value}</span>
                     <span
                         className={`${
                             percent < 0 ? 'text-primary-red' : 'text-secondary-green'

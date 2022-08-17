@@ -1,13 +1,7 @@
-import React from 'react'
-import { useMatch } from 'react-router-dom'
-import { ChevronDownIcon, MenuIcon, NotificationEmptyIcon, NotificationNewIcon } from '../../../components/Icon'
-import { MENU_ITEMS } from '../Sidebar'
+import { ChevronDownIcon, MenuIcon, NotificationEmptyIcon, NotificationNewIcon } from '../Icon'
 
-function Header() {
+function Header({ title }: { title: string }) {
     const hasNotification = true
-
-    const match = useMatch('/*')
-    const title = MENU_ITEMS.find(item => match?.pathname.includes(item.path))?.label
     return (
         <header className='flex justify-between items-center h-[90px] w-full bg-neutrals-01 px-10 shadow'>
             <div className='flex items-center'>
@@ -26,9 +20,9 @@ function Header() {
                         src='http://yt3.ggpht.com/wgneNTiW753q5G6XMnjyNLAzReR4TVFJryTKTpIqJefrKMyhABPwfnyNWIoT5NNGstFlva1tgw=s176-c-k-c0x00ffffff-no-rj-mo'
                         alt='F8'
                     />
-                    <div className='w-44 mr-4'>
+                    <div className='mr-4 w-44'>
                         <h4 className='font-semibold'>Nguyễn Việt Hoàng</h4>
-                        <span className='text-neutrals-05 text-xs'>Quản trị viên</span>
+                        <span className='text-xs text-neutrals-05'>Quản trị viên</span>
                     </div>
                     <ChevronDownIcon className='w-[18px] h-[18px]' />
                 </div>

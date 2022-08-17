@@ -1,5 +1,6 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import { Fragment } from 'react'
+
 import './App.css'
 
 import { publicRoutes } from './router'
